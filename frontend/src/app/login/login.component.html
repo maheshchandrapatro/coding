@@ -1,0 +1,47 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default" style="margin-top:31%">
+        <div class="panel-heading" style="background: #6d3c62;  padding-bottom: 15px; 
+          background: #6d3c62;
+          color: #fff;
+          padding: 16px 30px;
+          border-radius: 3px 3px 0 0;">
+          <h3 class="panel-title"><b>Please sign in</b></h3>
+        </div>
+        <div class="panel-body">
+          <form [formGroup]="loginForm">
+            <div class="form-group" [ngClass]="{ 'field-invalid': submitted && f.userName.errors }">
+              <label>User Name</label>
+              <input class="form-control" formControlName="userName" [(ngModel)]="authData.userName"
+                [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" placeholder="User Name" type="text">
+              <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                <div *ngIf="f.userName.errors.required">User Name is required</div>
+              </div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'field-invalid': submitted && f.password.errors }">
+              <label>Password</label>
+              <input class="form-control" formControlName="password" [(ngModel)]="authData.password"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" name="password"
+                type="password">
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+              </label>
+            </div>
+            <input class="btn btn-md btn-success btn-block" (click)='login()' type="submit" value="Login">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
